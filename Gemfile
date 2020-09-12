@@ -58,3 +58,5 @@ gem "haml-rails", ">= 1.0", '<= 2.0.1'
 
 #文字を扱うのと同じようにアイコンを表示させることができるFontAwesomeを導入
 gem 'font-awesome-sass'
+
+gem 'devise'
