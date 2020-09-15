@@ -1,1 +1,26 @@
-＜チャット画面＞
+.chat
+  .header
+    .left-header
+      .left-header__title
+        = @group.name
+      .left-header__members
+        Member：
+        - @group.users.each do |user|
+          = user.name
+          
+    .right-header
+      = link_to 'Edit', edit_group_path(@group[:id])
+
+  .messages 
+    = render @messages
+
+  .Footer
+    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|        
+      .Form__contents
+        = f.text_field :content, class: 'Form__inputContent', placeholder: 'type a message'
+        = f.label :image, class: 'Form__inputImage' do
+          = icon('far', 'image', class: 'Form__icon')
+          = f.file_field :image, class: 'Hidden'
+      = f.submit 'Send', class: 'Form__submit'
+
+
